@@ -1,6 +1,7 @@
+import * as path from 'path';
 import * as express from 'express';
-import * as socketio from "socket.io";
-import * as path from "path";
+import * as socketio from 'socket.io';
+
 
 // SETUP
 ///////////////////////////////////////////////////
@@ -16,12 +17,12 @@ var io = require('socket.io')(serv); // connect socket.io to server
 serv.listen(8000); // specified port or 8k as backup
 
 //route main page in index
-app.get('/',function(req, res) {
+app.get('/', function(_req, res) {
 	res.sendFile(path.resolve('./public/index.html'));
 });
 //Serve static files
-app.use('/dist',express.static(path.resolve('./dist')));
-app.use('/',express.static(path.resolve('./public')));
+app.use('/dist', express.static(path.resolve('./dist')));
+app.use('/', express.static(path.resolve('./public')));
 
 
 // SOCKET HANDLING
